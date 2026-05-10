@@ -1,6 +1,4 @@
-<?php include '../layout/header.php'; ?>
-
-<main class="auth">
+﻿<main class="auth">
     <div class="form-container">
         <h2>Lupa Password</h2>
         <form action="/handlers/auth_handler.php" method="POST">
@@ -14,5 +12,3 @@
         <p><a href="/login">Kembali ke Login</a></p>
     </div>
 </main>
-
-<?php include '../layout/footer.php'; ?>

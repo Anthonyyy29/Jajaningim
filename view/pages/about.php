@@ -1,6 +1,4 @@
-<?php include '../layout/header.php'; ?>
-
-<main class="about">
+﻿<main class="about">
     <h2>Tentang Jajaningim</h2>
     <p>Jajaningim adalah platform game online yang menyediakan berbagai permainan seru dan edukatif.</p>
 
@@ -14,5 +12,3 @@
         </div>
     </section>
 </main>
-
-<?php include '../layout/footer.php'; ?>

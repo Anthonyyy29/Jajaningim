@@ -1,185 +1,244 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+  margin: 0;
+  background: #1f1f1f;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-nav {
-    background-color: #1a1a2e;
-    padding: 1rem 2rem;
-    display: flex;
-    gap: 1.5rem;
+.page {
+  width: 1440px;
+  margin: 0 auto;
+  background: #f2f2f2;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
+/* NAVBAR */
+
+.navbar {
+  height: 98px;
+  background: #252b32;
+  display: flex;
+  align-items: center;
+  padding: 0 92px;
+  color: white;
 }
 
-nav a:hover {
-    color: #e94560;
+.logo-box {
+  width: 260px;
 }
 
-main {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+.logo-box img {
+  width: 92px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 0.6rem 1.4rem;
-    background-color: #e94560;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 1rem;
+.site-title {
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
 }
 
-.btn:hover {
-    background-color: #c73652;
+.nav-right {
+  width: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
 }
 
-.btn-outline {
-    background-color: transparent;
-    border: 2px solid #e94560;
-    color: #e94560;
+.search-box {
+  width: 190px;
+  height: 38px;
+  background: white;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
 }
 
-.btn-outline:hover {
-    background-color: #e94560;
-    color: #fff;
+.search-box input {
+  width: 135px;
+  border: none;
+  outline: none;
+  font-size: 12px;
 }
 
-/* Auth */
-.auth {
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
+.search-box button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.form-container {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 420px;
+.login-btn {
+  width: 120px;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  background: #00b8c8;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
-.form-container h2 {
-    margin-bottom: 1.5rem;
-    text-align: center;
+/* CONTENT */
+
+.content {
+  min-height: 2330px;
+  padding: 48px 0 150px;
 }
 
-.form-group {
-    margin-bottom: 1rem;
+.hero-text {
+  text-align: center;
+  margin-bottom: 90px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.4rem;
-    font-weight: 500;
+.hero-text h2 {
+  margin: 0 0 24px;
+  font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+  font-size: 32px;
+  line-height: 1.2;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
+.hero-text p {
+  margin: 0 0 24px;
+  font-size: 13px;
+  font-weight: 800;
 }
 
-.form-container .btn {
-    width: 100%;
-    margin-top: 0.5rem;
-    text-align: center;
+.hero-text h4 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 900;
 }
 
-.form-container p {
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
+/* GAME SECTION */
+
+.games-section {
+  width: 1000px;
+  margin: 0 auto 105px;
 }
 
-/* Landing */
-.hero {
-    text-align: center;
-    padding: 5rem 1rem;
+.games-section h3 {
+  margin: 0 0 35px;
+  font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: #555;
-}
-
-.hero .btn {
-    margin: 0 0.5rem;
-}
-
-/* Games */
 .game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 175px);
+  gap: 62px 95px;
 }
 
 .game-card {
-    background: #fff;
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    text-align: center;
+  width: 175px;
+  height: 205px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #222a33;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-.game-card h3 {
-    margin-bottom: 0.5rem;
+.game-card img {
+  width: 175px;
+  height: 145px;
+  object-fit: cover;
+  display: block;
 }
 
 .game-card p {
-    color: #666;
-    margin-bottom: 1rem;
+  height: 60px;
+  margin: 0;
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Game page */
-.game-area {
-    margin: 1.5rem 0;
+.discover {
+  margin: 130px 0 0;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
 }
 
-canvas {
-    border: 2px solid #1a1a2e;
-    border-radius: 8px;
-    display: block;
-    max-width: 100%;
+/* FOOTER */
+
+.footer {
+  height: 330px;
+  background: #343a42;
+  color: white;
+  display: grid;
+  grid-template-columns: 550px 1px 260px 180px;
+  column-gap: 80px;
+  padding: 55px 92px;
 }
 
-.game-controls {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #1a1a2e;
-    color: #aaa;
-    margin-top: 3rem;
+.brand-row img {
+  width: 80px;
+}
+
+.brand-row h3 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.footer-brand p {
+  width: 500px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #e7e7e7;
+}
+
+.footer-line {
+  height: 220px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.footer-find h3 {
+  margin: 0 0 28px;
+  font-size: 26px;
+}
+
+.footer-find p {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.socials {
+  display: flex;
+  gap: 9px;
+  font-size: 20px;
+}
+
+.footer-links {
+  padding-top: 62px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 900;
 }

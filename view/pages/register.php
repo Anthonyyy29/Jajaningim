@@ -1,9 +1,7 @@
-<?php include '../layout/header.php'; ?>
-
-<main class="auth">
+﻿<main class="auth">
     <div class="form-container">
         <h2>Daftar Akun</h2>
-        <form action="/handlers/auth_handler.php" method="POST">
+        <form action="/app/handlers/request.php" method="POST">
             <input type="hidden" name="action" value="register">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -26,5 +24,3 @@
         <p>Sudah punya akun? <a href="/login">Login</a></p>
     </div>
 </main>
-
-<?php include '../layout/footer.php'; ?>

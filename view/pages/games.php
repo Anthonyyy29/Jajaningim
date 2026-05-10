@@ -1,6 +1,4 @@
-<?php include '../layout/header.php'; ?>
-
-<main class="games">
+﻿<main class="games">
     <h2>Daftar Game</h2>
     <div class="game-grid">
         <div class="game-card">
@@ -15,5 +13,3 @@
         </div>
     </div>
 </main>
-
-<?php include '../layout/footer.php'; ?>
