@@ -1,0 +1,779 @@
+/* ================================================
+   JAJANINGIM - style.css
+   
+   Cara baca file ini:
+   - Setiap bagian diberi komentar besar (=====)
+   - Setiap properti CSS yang penting diberi komentar singkat
+   ================================================ */
+
+
+/* ================================================
+   WARNA & VARIABEL GLOBAL
+   Ganti warna di sini untuk mengubah seluruh tampilan
+   ================================================ */
+:root {
+  --warna-navbar: #393E46;          /* Biru tua gelap untuk navbar */
+  --warna-aksen: #00ADB5;           /* Biru cyan terang (highlight) */
+  --warna-aksen-hover: #0097a7;     /* Cyan lebih gelap untuk hover */
+  --warna-background: #e8f4f8;      /* Biru muda untuk background halaman */
+  --warna-kartu: #393E46;           /* Biru gelap untuk kartu */
+  --warna-kartu-tepi: #2a4a70;      /* Tepi kartu */
+  --warna-teks-terang: #ffffff;     /* Teks putih */
+  --warna-teks-gelap: #333333;      /* Teks abu gelap */
+  --warna-hijau: #4caf50;           /* Hijau untuk sukses */
+  --warna-orange: #ff9800;          /* Orange untuk tombol login */
+  --warna-abu: #9e9e9e;             /* Abu untuk elemen nonaktif */
+  --shadow: 0 4px 15px rgba(0,0,0,0.3); /* Bayangan standar */
+}
+
+
+/* ================================================
+   RESET DASAR
+   Menghapus styling bawaan browser
+   ================================================ */
+* {
+  box-sizing: border-box;   /* Ukuran elemen termasuk padding & border */
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: var(--warna-teks-gelap);
+}
+
+
+/* ================================================
+   UTILITY: TERSEMBUNYI
+   Class ini dipakai JS untuk sembunyikan/tampilkan halaman
+   ================================================ */
+.tersembunyi {
+  display: none !important;
+}
+
+
+/* ================================================
+   NAVBAR
+   ================================================ */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 12px 30px;
+  background: var(--warna-navbar);
+  position: sticky;      /* Tetap di atas saat scroll */
+  top: 0;
+  z-index: 999;
+  gap: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Logo di kiri navbar */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-bulat {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.logo-teks {
+  color: var(--warna-teks-terang);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Judul di tengah navbar */
+.navbar-judul {
+  flex: 1;               /* Mengisi ruang kosong di tengah */
+  text-align: center;
+  color: var(--warna-teks-terang);
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* Bagian kanan navbar: search + login */
+.navbar-kanan {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-search {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 14px;
+  width: 140px;
+}
+
+.navbar-search::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.tombol-login {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: var(--warna-aksen);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;   /* Teks tidak wrap */
+  font-size: 13px;
+}
+
+.tombol-login:hover {
+  background: var(--warna-aksen-hover);
+}
+
+
+/* ================================================
+   KONTEN UTAMA
+   Pembungkus semua kartu di halaman utama
+   ================================================ */
+.konten-utama {
+  max-width: 700px;
+  margin: 30px auto;      /* Tengahkan secara horizontal */
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;              /* Jarak antar kartu */
+}
+
+
+/* ================================================
+   BANNER GAME (Mobile Legends)
+   ================================================ */
+.banner-game {
+  background: var(--warna-kartu);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--warna-kartu-tepi);
+}
+
+.banner-kiri {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.banner-icon {
+  width: 100px;
+  height: 60px;
+  background: linear-gradient(#EEEEEE);
+  outline-color: #4caf50;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.banner-nama-game {
+  color: var(--warna-teks-terang);
+  font-weight: bold;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.banner-kanan {
+  flex: 1;
+}
+
+.banner-deskripsi {
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.banner-store {
+  display: flex;
+  gap: 20px;
+}
+
+.tombol-store {
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 150px;
+  height: auto;
+}
+
+
+/* ================================================
+   KARTU (Pembungkus setiap section)
+   ================================================ */
+.kartu {
+  background: var(--warna-kartu);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--warna-kartu-tepi);
+}
+
+.kartu-judul {
+  color: var(--warna-aksen);
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(0,188,212,0.15);
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  border: 1px solid var(--warna-aksen);
+}
+
+
+/* ================================================
+   SECTION USER ID
+   Input ID dan Server
+   ================================================ */
+.baris-input {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.kolom-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kolom-input label {
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.kolom-input input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--warna-aksen);
+  background: #EEEEEE;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+}
+
+.kolom-input input::placeholder {
+  color: rgba(37, 37, 37, 0.4);
+}
+
+.kolom-input small {
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+}
+
+/* Kotak info akun (preview akun di kanan) */
+.info-akun {
+  flex: 1;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.contoh-akun {
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+
+/* ================================================
+   GRID DIAMOND
+   Grid untuk pilih jumlah diamond
+   ================================================ */
+.grid-diamond {
+  display: flex;
+  grid-template-columns: repeat(7, auto);   /* 7 kolom */
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* Setiap item diamond */
+.item-diamond {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;    /* Animasi saat hover/klik */
+}
+
+.item-diamond:hover {
+  background: rgba(0,188,212,0.2);
+  border-color: var(--warna-aksen);
+  transform: translateY(-2px);   /* Naik sedikit saat hover */
+}
+
+/* Diamond yang sudah dipilih */
+.item-diamond.terpilih {
+  background: rgba(0,188,212,0.3);
+  border-color: var(--warna-aksen);
+  box-shadow: 0 0 10px rgba(0,188,212,0.4);
+}
+
+.diamond-icon {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.diamond-jumlah {
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.diamond-harga {
+  color: var(--warna-aksen);
+  font-size: 9px;
+}
+
+/* Diamond 2010 & 4830 lebih lebar */
+.item-diamond-besar {
+  grid-column: span 1;
+}
+
+
+/* ================================================
+   GRID PAYMENT
+   Grid untuk pilih metode pembayaran
+   ================================================ */
+.grid-payment {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;          /* Pindah baris kalau tidak muat */
+  justify-content: center;
+}
+
+
+.item-payment {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 90px;
+}
+
+.item-payment:hover {
+  border-color: var(--warna-aksen);
+  background: rgba(0,188,212,0.15);
+}
+
+.item-payment.terpilih {
+  border-color: var(--warna-aksen);
+  background: rgba(0,188,212,0.25);
+  box-shadow: 0 0 10px rgba(0,188,212,0.3);
+}
+
+.payment-icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.payment-nama {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+/* ================================================
+   BARIS EMAIL + INVOICE (dua kartu sejajar)
+   ================================================ */
+.baris-email-invoice {
+  display: flex;
+  gap: 16px;
+}
+
+/* Email mengambil 40% lebar */
+.kartu-email {
+  flex: 1;
+}
+
+/* Invoice mengambil 60% lebar */
+.kartu-invoice {
+  flex: 1.5;
+}
+
+.email-deskripsi {
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.kartu-email input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-size: 14px;
+}
+
+.kartu-email input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+
+/* ================================================
+   INVOICE
+   ================================================ */
+.invoice-baris {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  gap: 8px;
+}
+
+.invoice-label {
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  min-width: 70px;
+}
+
+.invoice-nilai {
+  color: white;
+  font-size: 12px;
+  text-align: right;
+}
+
+
+/* ================================================
+   TOMBOL BELI SEKARANG
+   ================================================ */
+.tombol-beli {
+  width: 100%;
+  margin-top: 16px;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: var(--warna-aksen);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+
+.tombol-beli:hover {
+  background: var(--warna-aksen-hover);
+}
+
+
+/* ================================================
+   HALAMAN LOADING & SUKSES
+   Layout tengah untuk halaman 2 & 3
+   ================================================ */
+.konten-tengah {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 20px;
+  position: relative;    /* Untuk posisi tombol kembali/next */
+}
+
+/* Tombol Back (kiri atas) */
+.tombol-kembali {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: var(--warna-aksen);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Tombol Next (kanan atas) */
+.tombol-next {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: var(--warna-aksen);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Lingkaran besar di tengah halaman */
+.lingkaran-status {
+  width: 120px;
+  height: 120px;
+  background: rgba(158,158,158,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Lingkaran hijau untuk sukses */
+.lingkaran-hijau {
+  background: rgba(76,175,80,0.25);
+  border: 3px solid var(--warna-hijau);
+}
+
+.jam-icon {
+  font-size: 50px;
+  animation: putar 2s linear infinite;   /* Animasi berputar */
+}
+
+/* Animasi putar untuk jam */
+@keyframes putar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.centang-icon {
+  font-size: 60px;
+  color: var(--warna-hijau);
+  font-weight: bold;
+}
+
+/* Tombol status abu (menunggu) */
+.tombol-status-abu {
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: none;
+  background: #9e9e9e;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: default;
+}
+
+/* Tombol status hijau (berhasil) */
+.tombol-status-hijau {
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: none;
+  background: var(--warna-hijau);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: default;
+}
+
+.teks-info {
+  text-align: center;
+  color: var(--warna-teks-gelap);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.link-biru {
+  color: var(--warna-aksen);
+  text-decoration: none;
+}
+
+/* Angka countdown besar */
+.countdown {
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--warna-aksen);
+}
+
+
+/* ================================================
+   FOOTER
+   ================================================ */
+.footer {
+  background: #1a1a2e;
+  color: rgba(255,255,255,0.8);
+  padding: 40px;
+  margin-top: 40px;
+}
+
+.footer-konten {
+  display: flex;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-kiri {
+  flex: 2;
+}
+
+.footer-tengah {
+  flex: 1.5;
+}
+
+.footer-kanan {
+  flex: 1;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.footer-nama {
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+}
+
+.footer-deskripsi {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+}
+
+/* Setiap fitur di footer */
+.footer-fitur {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fitur-item {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.fitur-icon {
+  font-size: 20px;
+  min-width: 24px;
+}
+
+.fitur-item strong {
+  color: white;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.fitur-item p {
+  color: rgba(255,255,255,0.55);
+  margin: 0;
+}
+
+.footer-kanan strong {
+  color: white;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.footer-kanan p {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.sosmed {
+  font-size: 18px;
+  margin-bottom: 16px;
+  letter-spacing: 4px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-links a:hover {
+  color: var(--warna-aksen);
+}
+
+.footer-bawah {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+
+/* ================================================
+   RESPONSIVE - untuk layar kecil (HP)
+   ================================================ */
+@media (max-width: 600px) {
+
+  /* Grid diamond jadi 4 kolom */
+  .grid-diamond {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Email & Invoice jadi vertikal */
+  .baris-email-invoice {
+    flex-direction: column;
+  }
+
+  /* Input ID & Server jadi vertikal */
+  .baris-input {
+    flex-direction: column;
+  }
+
+  /* Navbar judul lebih kecil */
+  .navbar-judul {
+    font-size: 16px;
+  }
+
+  /* Sembunyikan search di HP */
+  .navbar-search {
+    display: none;
+  }
+
+  /* Footer jadi vertikal */
+  .footer-konten {
+    flex-direction: column;
+  }
+
+}
