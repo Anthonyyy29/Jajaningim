@@ -1,0 +1,342 @@
+/* FONT LOKAL */
+@font-face {
+    font-family: 'Jersey20';
+    src: url('fonts/Jersey20-Regular.ttf');
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* KIRI */
+.left {
+    width: 50%;
+    background: 
+        radial-gradient(circle at 85% 35%, rgba(0, 255, 220, 0.28), transparent 35%),
+        radial-gradient(circle at 15% 85%, rgba(0, 120, 180, 0.35), transparent 30%),
+        linear-gradient(135deg, #061a33 0%, #07506b 45%, #10d6c8 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-content {
+    background:transparent;
+    padding: 35px 50px;
+    border-radius: 25px;
+    text-align: center;
+    width: 500px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(3px);
+}
+
+/* semua isi utama di atas shape */
+.left-content img,
+.left-content h1,
+.left-content p,
+.left-content .promo-box {
+    position: relative;
+    z-index: 2;
+}
+
+/* shape dasar */
+.shape {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.35;
+}
+
+/* lingkaran kiri atas */
+.shape1 {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    top: -30px;
+    left: -30px;
+}
+
+/* lingkaran blur kanan atas */
+.shape2 {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.18);
+    top: 40px;
+    right: 30px;
+    filter: blur(2px);
+}
+
+/* kotak miring bawah kiri */
+.shape3 {
+    width: 90px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.12);
+    bottom: 120px;
+    left: 35px;
+    transform: rotate(45deg);
+    border-radius: 18px;
+}
+
+/* lingkaran outline kanan bawah */
+.shape4 {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.22);
+    bottom: 35px;
+    right: 25px;
+}
+
+/* blob kecil tengah */
+.shape5 {
+    width: 70px;
+    height: 70px;
+    background: rgba(0, 255, 255, 0.18);
+    border-radius: 50% 40% 60% 30%;
+    top: 220px;
+    left: 25px;
+}
+
+/* DEKORASI NEON */
+.deco {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.circle1 {
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.08);
+    top: 20px;
+    left: 25px;
+}
+
+.circle2 {
+    width: 120px;
+    height: 120px;
+    background: rgba(0, 255, 230, 0.12);
+    top: 55px;
+    right: 70px;
+    box-shadow: 0 0 35px rgba(0, 255, 230, 0.25);
+}
+
+.circle3 {
+    width: 130px;
+    height: 130px;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    right: 45px;
+    bottom: 45px;
+}
+
+.spark {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 30px;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.7);
+}
+
+.spark1 {
+    top: 115px;
+    left: 155px;
+}
+
+.spark2 {
+    top: 160px;
+    right: 130px;
+}
+
+.spark3 {
+    bottom: 250px;
+    left: 80px;
+}
+
+.lightning {
+    color: #78faff;
+    font-size: 42px;
+    text-shadow: 0 0 10px #00eaff, 0 0 22px #00eaff;
+    transform: rotate(-12deg);
+}
+
+.lightning1 {
+    top: 300px;
+    left: 75px;
+}
+
+.lightning2 {
+    right: 70px;
+    bottom: 280px;
+}
+
+.logo {
+    width: 450px;
+    margin-bottom: 20px;
+}
+
+.left h1 {
+    font-size: 26px;
+    margin: 5px 0;
+}
+
+.left p {
+    font-size: 15px;
+    margin: 5px 0 25px;
+}
+
+/* PROMO */
+.promo-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.gift {
+    width: 170px;
+}
+
+.promo-box p {
+    margin: 0;
+    font-family: 'Jersey20', sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+/* KANAN */
+.right {
+    width: 50%;
+    background: #f4f6f8;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 28px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 25px;
+}
+
+/* FORM */
+form {
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+/* INPUT BOX */
+.input-box {
+    position: relative;
+    margin-top: 5px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 45px 12px 40px;
+    border: none;
+    border-radius: 8px;
+    background: #e9edf2;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.input-box input:focus {
+    outline: none;
+}
+
+/* ICON KIRI */
+.icon-left {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+}
+
+/* ICON KANAN (EYE) */
+.icon-right {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: #6ecdda;
+    color: white;
+    border: 1px solid #111827;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* LINK */
+.link-login {
+    text-align: center;
+    margin-top: 15px;
+}
+
+a {
+    color: #2f80ed;
+    text-decoration: none;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.forgot-password a {
+    font-size: 13px;
+    color: #2f80ed;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}

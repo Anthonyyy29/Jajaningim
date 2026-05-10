@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #c9f5f4, #f4f4f4 45%, #f2f2f2);
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgot-box {
+    width: 480px;
+    text-align: center;
+}
+
+.reset-icon {
+    width: 100px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #6b7c99;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 8px;
+    margin-top: 18px;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 13px 45px 13px 55px;
+    border: none;
+    outline: none;
+    border-radius: 9px;
+    background: #dbe6f2;
+    font-size: 15px;
+    color: #111827;
+}
+
+.input-box input::placeholder {
+    color: #888;
+    font-weight: bold;
+}
+
+.icon-left {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+}
+
+.icon-right {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 35px;
+    border: 1px solid #111827;
+    border-radius: 10px;
+    background: #6ecdda;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+.back-login {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.back-login a {
+    color: #2f80ed;
+    text-decoration: none;
+}
+
+.status-email {
+    font-size: 13px;
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+.status-email.success {
+    color: #27ae60;
+}
+
+.status-email.error {
+    color: #eb5757;
+}
