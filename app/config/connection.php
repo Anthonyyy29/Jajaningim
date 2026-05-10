@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'nama_database';
+$db   = 'jajaningim_DB';
 $user = 'root';
 $pass = '';
 

@@ -8,40 +8,14 @@
   <section class="games-section">
     <h3>GAME POPULER</h3>
     <div class="game-grid">
-      <a href="/?url=games" class="game-card">
-        <img src="/assets/logo_game/mlbb.png" alt="Mobile Legends">
-        <p>Mobile Legends</p>
+      <?php foreach (($games ?? []) as $game): ?>
+      <a href="/?url=game<?= $game['id_game'] ?>" class="game-card">
+        <img src="/assets/logo_game/<?= htmlspecialchars($game['gambar_game']) ?>" alt="<?= htmlspecialchars($game['nama_game']) ?>">
+        <p><?= htmlspecialchars($game['nama_game']) ?></p>
       </a>
-      <a href="/?url=games" class="game-card">
-        <img src="/assets/logo_game/freefire.png" alt="Free Fire">
-        <p>Free Fire</p>
-      </a>
-      <a href="/?url=games" class="game-card">
-        <img src="/assets/logo_game/codm.png" alt="COD Mobile">
-        <p>COD Mobile</p>
-      </a>
-      <a href="/?url=games" class="game-card">
-        <img src="/assets/logo_game/pubgm.png" alt="PUBG Mobile">
-        <p>PUBG Mobile</p>
-      </a>
-      <a href="/?url=games" class="game-card">
-        <img src="/assets/logo_game/genshin.png" alt="Genshin Impact">
-        <p>Genshin Impact</p>
-      </a>
-      <a href="/?url=games" class="game-card">
-        <img src="/assets/logo_game/valorant.png" alt="Valorant">
-        <p>Valorant</p>
-      </a>
-      <a href="/?url=games" class="game-card">
-        <img src="/assets/logo_game/steam.png" alt="Steam">
-        <p>Steam Wallet</p>
-      </a>
-      <a href="/?url=games" class="game-card">
-        <img src="/assets/logo_game/playstore.png" alt="Google Play">
-        <p>Google Play</p>
-      </a>
+      <?php endforeach; ?>
     </div>
   </section>
 
-  <p class="discover">DISCOVER MORE GAMES &rarr;</p>
+  <a href="/?url=games" class="discover">DISCOVER MORE GAMES &rarr;</a>
 </main>

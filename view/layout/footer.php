@@ -17,9 +17,9 @@
         <h3>Find Us</h3>
         <p>More about Us :</p>
         <div class="socials">
-          <span>◎</span>
-          <span>f</span>
-          <span>▻</span>
+          <a href="#"><img src="/assets/logo_jajaningim/instagram.png" alt="Instagram" class="sosmed-icon"></a>
+          <a href="#"><img src="/assets/logo_jajaningim/facebook.png" alt="Facebook" class="sosmed-icon"></a>
+          <a href="#"><img src="/assets/logo_jajaningim/youtube.png" alt="YouTube" class="sosmed-icon"></a>
         </div>
       </div>
 
