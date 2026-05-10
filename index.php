@@ -86,7 +86,7 @@ switch ($url) {
     case 'admin_transaksi':
         require_admin();
         require_once 'app/config/connection.php';
-        $stmt      = $pdo->query("SELECT * FROM transaksi ORDER BY id_transaksi DESC");
+        $stmt      = $pdo->query("SELECT * FROM transaksi ORDER BY date_transaksi DESC");
         $transaksi = $stmt->fetchAll(PDO::FETCH_ASSOC);
         require_once 'view/admin/kelola_transaksi.php';
         break;
