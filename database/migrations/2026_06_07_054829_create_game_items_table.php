@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('game_items', function (Blueprint $table) {
             $table->id('id_item');
-            $table->unsignedBigInteger('id_games');
+            $table->unsignedBigInteger('game_id');
 
-            $table->foreign('id_games')
+            $table->foreign('game_id')
                 ->references('id_game')
                 ->on('games')
                 ->onDelete('cascade');

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
 
             $table->foreign('user_id')
-                ->references('id_akun')
-                ->on('akun')
+                ->references('id_account')
+                ->on('accounts')
                 ->cascadeOnDelete();
         });
     }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id('id_game');
-            $table->string('nama_game');
-            $table->string('gambar_game');
+            $table->string('name');
+            $table->string('image');
         });
     }
 

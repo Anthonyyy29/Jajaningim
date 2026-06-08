@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment_method', function (Blueprint $table) {
+        Schema::create('payment_methods', function (Blueprint $table) {
             $table->id('id_payment');
-            $table->string('metode_payment');
+            $table->string('name');
             $table->text('logo')->nullable();
             $table->enum('is_active', ['true', 'false'])->default('true');
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_method');
+        Schema::dropIfExists('payment_methods');
     }
 };

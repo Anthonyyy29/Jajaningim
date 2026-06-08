@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaction', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id('id_transaction');
 
             $table->unsignedBigInteger('id_item');
             $table->unsignedBigInteger('id_payment');
 
-            $table->unsignedBigInteger('id_akun')->nullable();
+            $table->unsignedBigInteger('id_account')->nullable();
             $table->unsignedBigInteger('guest_session_id')->nullable();
 
             $table->string('game_user_id')->nullable();
@@ -42,19 +42,19 @@ return new class extends Migration
                 ->on('game_items')
                 ->onDelete('cascade');
 
-            $table->foreign('id_akun')
-                ->references('id_akun')
-                ->on('akun')
+            $table->foreign('id_account')
+                ->references('id_account')
+                ->on('accounts')
                 ->nullOnDelete();
 
             $table->foreign('guest_session_id')
                 ->references('id')
-                ->on('guest_session_id')
+                ->on('guest_session_ids')
                 ->nullOnDelete();
 
             $table->foreign('id_payment')
                 ->references('id_payment')
-                ->on('payment_method')
+                ->on('payment_methods')
                 ->onDelete('cascade');
         });
     }
@@ -64,6 +64,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaction');
+        Schema::dropIfExists('transactions');
     }
 };

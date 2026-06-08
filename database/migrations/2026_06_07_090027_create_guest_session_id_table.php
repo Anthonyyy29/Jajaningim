@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guest_session_id', function (Blueprint $table) {
+        Schema::create('guest_session_ids', function (Blueprint $table) {
             $table->id();
             $table->string('session_token')->unique();
             $table->text('email')->nullable();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guest_session_id');
+        Schema::dropIfExists('guest_session_ids');
     }
 };

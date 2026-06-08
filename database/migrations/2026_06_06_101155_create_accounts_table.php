@@ -8,9 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('akun', function (Blueprint $table) {
-            $table->id('id_akun');
-            $table->string('username_akun', 20)->unique();
+        Schema::create('accounts', function (Blueprint $table) {
+            $table->id('id_account');
+            $table->string('username_account', 20)->unique();
             $table->string('password');
             $table->string('email', 50)->unique();
             $table->enum('role', ['user', 'admin'])->default('user');
@@ -20,6 +20,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('akun');
+        Schema::dropIfExists('accounts');
     }
 };
