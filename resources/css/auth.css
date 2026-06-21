@@ -1,0 +1,233 @@
+/* ===========================================================
+   Ocean Fresh — Auth pages (login & register)
+   Variabel warna (--of-*) diambil dari resources/css/app.css
+   =========================================================== */
+
+.auth-wrapper {
+    display: flex;
+    min-height: 75vh;
+    background-color: var(--of-base);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--of-border);
+}
+
+.auth-left {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    background: linear-gradient(160deg, var(--of-base) 0%, var(--of-primary) 45%, var(--of-teal) 100%);
+    padding: 3rem;
+}
+
+.auth-left-content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.auth-logo {
+    height: 90px;
+    margin-bottom: 1.5rem;
+}
+
+.auth-left-title {
+    font-weight: 700;
+    font-size: 1.9rem;
+    margin-bottom: .5rem;
+}
+
+.auth-left-sub {
+    color: rgba(255, 255, 255, .85);
+}
+
+.auth-promo-box {
+    margin-top: 1.5rem;
+    background-color: var(--of-surface-2);
+    border: 1px solid var(--of-border);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    color: var(--of-text);
+}
+
+.auth-circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, .08);
+}
+
+.auth-circle-1 {
+    width: 260px;
+    height: 260px;
+    top: -60px;
+    right: -60px;
+}
+
+.auth-circle-2 {
+    width: 340px;
+    height: 340px;
+    bottom: -120px;
+    left: 30%;
+}
+
+.auth-star {
+    position: absolute;
+    color: #7dd3fc;
+    opacity: .8;
+    font-size: 1rem;
+}
+
+.auth-star-1 {
+    top: 14%;
+    left: 8%;
+}
+
+.auth-star-2 {
+    top: 24%;
+    left: 38%;
+}
+
+.auth-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--of-base);
+    padding: 3rem 1.5rem;
+}
+
+.auth-form-wrap {
+    width: 100%;
+    max-width: 420px;
+}
+
+.auth-title {
+    color: var(--of-text);
+    font-weight: 700;
+}
+
+.auth-subtitle {
+    color: var(--of-text-2);
+    margin-bottom: 1.5rem;
+}
+
+.auth-label {
+    color: var(--of-text-2);
+    font-size: .9rem;
+    margin-bottom: .35rem;
+    display: block;
+}
+
+.auth-input-group {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background-color: var(--of-surface);
+    border: 1px solid var(--of-border);
+    border-radius: 10px;
+    padding: .6rem .85rem;
+}
+
+.auth-input-group i:first-child {
+    color: var(--of-muted);
+}
+
+.auth-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--of-text);
+    outline: none;
+    min-width: 0;
+}
+
+.auth-input::placeholder {
+    color: var(--of-muted);
+}
+
+.auth-input-toggle {
+    cursor: pointer;
+    color: var(--of-muted);
+}
+
+.auth-btn-primary {
+    background-color: var(--of-primary);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: .7rem;
+    border-radius: 10px;
+}
+
+.auth-btn-primary:hover {
+    background-color: var(--of-primary-h);
+    color: #fff;
+}
+
+.auth-btn-google {
+    background-color: var(--of-surface);
+    border: 1px solid var(--of-border);
+    color: var(--of-text);
+    font-weight: 500;
+    padding: .65rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.auth-btn-google:hover {
+    background-color: var(--of-surface-2);
+    color: var(--of-text);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    color: var(--of-muted);
+    font-size: .85rem;
+    margin: 1.25rem 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid var(--of-border);
+}
+
+.auth-divider span {
+    padding: 0 .75rem;
+}
+
+.auth-link {
+    color: var(--of-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-link:hover {
+    color: var(--of-primary-h);
+    text-decoration: underline;
+}
+
+.auth-link-muted {
+    color: var(--of-text-2);
+    text-decoration: none;
+    font-size: .875rem;
+}
+
+.auth-link-muted:hover {
+    color: var(--of-text);
+}
+
+@media (max-width: 767.98px) {
+    .auth-wrapper {
+        min-height: auto;
+    }
+}

@@ -1,0 +1,93 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* ===========================================================
+   Ocean Fresh — Color Palette
+   Diekstrak dari resources/css/ocean_fresh_design_system_lengkap.html
+   =========================================================== */
+:root {
+  /* Warna inti */
+  --of-base:       #111A2E; /* warna dasar / tema */
+  --of-primary:    #1E66F5; /* tombol utama, link, logo */
+  --of-teal:       #14B8A6; /* highlight, tab aktif */
+  --of-accent:     #FF8A3D; /* promo, badge "hot", CTA */
+
+  /* Permukaan & teks */
+  --of-bg:         #0C1322; /* latar halaman */
+  --of-surface:    #18223A; /* kartu produk, panel */
+  --of-surface-2:  #222F4D; /* modal, dropdown, hover */
+  --of-border:     #2C3A57; /* garis pemisah, outline */
+  --of-text:       #F4F8FF; /* judul, harga, nama game */
+  --of-text-2:     #A9B6CE; /* deskripsi, label */
+  --of-muted:      #66748F; /* placeholder, disabled */
+
+  /* State & hover */
+  --of-primary-h:  #1A56D6; /* tombol biru saat hover */
+  --of-teal-h:     #0E9488; /* elemen teal saat hover */
+  --of-accent-h:   #F57420; /* tombol oranye saat hover */
+  --of-disabled:   #3A4663; /* tombol tidak aktif */
+
+  /* Status transaksi */
+  --of-success:    #22C55E; /* berhasil */
+  --of-success-bg: #0F2E1E;
+  --of-danger:     #EF4444; /* gagal */
+  --of-danger-bg:  #33161A;
+  --of-warning:    #F5A524; /* pending */
+  --of-warning-bg: #352711;
+  --of-info:       #38BDF8; /* info / promo */
+  --of-info-bg:    #0E2A3B;
+}
+
+/* Jumbotron */
+h1, h2, h3, h4, h5, h6,
+.heading-jumbotron {
+    font-family: 'Saira Stencil One', sans-serif;
+}
+
+.text-of-accent {
+    color: var(--of-accent);
+}
+
+.text-of-teal {
+    color: var(--of-teal);
+}
+
+.text-of-primary {
+    color: var(--of-primary);
+}
+
+body {
+    background-color: var(--of-bg);
+    color: var(--of-text);
+}
+
+.jumbotron .lead {
+    color: var(--of-text-2);
+}
+
+.promo-banner {
+    background-color: var(--of-surface);
+    border: 1px solid var(--of-border);
+}
+
+.promo-banner-desc {
+    color: var(--of-text-2);
+}
+
+.btn-of-accent {
+    background-color: var(--of-accent);
+    color: #111A2E;
+    border: none;
+    border-radius: 50rem;
+    font-weight: 700;
+    padding: .55rem 1.5rem;
+    white-space: nowrap;
+}
+
+.btn-of-accent:hover {
+    background-color: var(--of-accent-h);
+    color: #111A2E;
+}
+
+
+
+
