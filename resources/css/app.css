@@ -64,12 +64,12 @@ body {
     color: var(--of-text-2);
 }
 
-.promo-banner {
+.promo_banner {
     background-color: var(--of-surface);
     border: 1px solid var(--of-border);
 }
 
-.promo-banner-desc {
+.promo_banner-desc {
     color: var(--of-text-2);
 }
 
