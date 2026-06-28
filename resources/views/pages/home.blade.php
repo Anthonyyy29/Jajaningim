@@ -7,7 +7,8 @@
 
 
 <x-promo_banner/> 
-<x-games_populer/>
+<x-games_populer :games="$games" />
+
 
 
 </x-layouts.app>
