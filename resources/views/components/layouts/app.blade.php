@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     {{-- Vite (Bootstrap masuk dari sini) --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @php $allGames = \App\Models\Game::where('is_active', 'true')->get(['id', 'name']); @endphp
+    <script>
+        window.GAMES           = @json($allGames);
+        window.GAME_BASE_URL   = '{{ url('/game') }}';
+        window.NOT_FOUND_URL   = '{{ url('/game-not-found') }}';
+    </script>
 </head>
 <body>
 

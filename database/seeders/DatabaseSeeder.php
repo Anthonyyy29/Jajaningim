@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            games_seeder::class,
-            game_items_seeder::class,
+            GameSeeder::class,
+            GameDetailsSeeder::class,
             payment_method_seeder::class,
         ]);
     }

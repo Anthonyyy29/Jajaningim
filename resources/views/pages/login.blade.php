@@ -18,15 +18,19 @@
                 <h1 class="auth-title">Masuk ke Akun</h1>
                 <p class="auth-subtitle">Belum punya akun? <a href="{{ route('register') }}" class="auth-link">Daftar di sini</a></p>
 
-                <form method="POST" action="#">
+                <form method="POST" action="{{ route('login.post') }}">
                     @csrf
 
                     <div class="mb-3">
                         <label class="auth-label" for="email">Email</label>
                         <div class="auth-input-group">
                             <i class="bi bi-envelope"></i>
-                            <input type="email" id="email" name="email" class="auth-input" placeholder="Contoh@gmail.com">
+                            <input type="email" id="email" name="email" class="auth-input" placeholder="Contoh@gmail.com"
+                                   value="{{ old('email') }}">
                         </div>
+                        @error('email')
+                            <div class="auth-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-2">
@@ -36,6 +40,9 @@
                             <input type="password" id="password" name="password" class="auth-input" placeholder="Masukkan password">
                             <i class="bi bi-eye auth-input-toggle" data-target="password"></i>
                         </div>
+                        @error('password')
+                            <div class="auth-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="text-end mb-3">

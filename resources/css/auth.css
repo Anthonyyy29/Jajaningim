@@ -231,3 +231,9 @@
         min-height: auto;
     }
 }
+
+.auth-error {
+    color: var(--of-danger);
+    font-size: .8rem;
+    margin-top: .35rem;
+}

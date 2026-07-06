@@ -1,41 +1,101 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Game;
 
+use App\Models\Game;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
-    // BELUM DIPAKAI KARENA AUTENTIKASI BELUM DI SETUP
-    // public function adminIndex()
-    // {
-    //     // index untuk admin, tanpa filter
-    //     $games = Game::all();
-    //     return view('pages/admin/games', compact('games'));
-    // } 
+    // // // // // // // // // //
+    // CONTROLLER UNTUK PUBLIC //
+    // // // // // // // // // //
     
+
+    // Menampilkan semua game yang aktif untuk PUBLIC
     public function index()
     {
-        // index untuk publik
+        $games = Game::where('is_active', 'true')->get();
+        return view('pages.allgames', compact('games'));
+    } 
+    public function populerIndex()
+    {
+        $games = Game::where('is_active', 'true')->get();
+        return view('pages.home', compact('games'));
+    } 
+
+
+    // Menampilkan detail game tertentu untuk PUBLIC
+    public function show($id)
+    {
+        $game = Game::findOrFail($id);
+        $paymentMethods = PaymentMethod::where('is_active', 'true')->get();
+        return view('pages.game', compact('game', 'paymentMethods'));
+    }
+    
+    
+    // // // // // // // // // //
+    // CONTROLLER UNTUK ADMIN  //
+    // // // // // // // // // //
+    
+    // Menampilkan semua game yang aktif untuk ADMIN
+    public function indexAdmin()
+    {
         $games = Game::where('is_active', 'true')->get();
         return view('pages.home', compact('games'));
     }
-    
-    public function AllGamesIndex()
-    {
-        // index untuk publik
-        $games = Game::where('is_active', 'true')->get();
-        return view('pages.allgames', compact('games'));
-    }
 
-    
-    public function show($id)
+    // Menampilkan detail game tertentu untuk ADMIN
+    public function showAdmin($id)
     {
         // show detail game
         $game = Game::findOrFail($id);
-        return view('pages.game'.$id, compact('game'));
+        return view('pages.game', compact('game'));
     }
 
+
+
+
+
+
     
+    public function create()
+    {
+        //
+        }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Game $game)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Game $game)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Game $game)
+    {
+        //
+    }
 }

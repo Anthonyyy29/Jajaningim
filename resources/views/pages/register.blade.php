@@ -23,23 +23,31 @@
                 <h1 class="auth-title">Daftar Akun Baru</h1>
                 <p class="auth-subtitle">Buat akun untuk mulai top up &amp; belanja game di JajaninGim.</p>
 
-                <form method="POST" action="#">
+                <form method="POST" action="{{ route('register.post') }}">
                     @csrf
 
                     <div class="mb-3">
-                        <label class="auth-label" for="username">Username / Nama</label>
+                        <label class="auth-label" for="name">Username / Nama</label>
                         <div class="auth-input-group">
                             <i class="bi bi-person"></i>
-                            <input type="text" id="username" name="username" class="auth-input" placeholder="Contoh: Jajanipro">
+                            <input type="text" id="name" name="name" class="auth-input" placeholder="Contoh: Jajanipro"
+                                   value="{{ old('name') }}">
                         </div>
+                        @error('name')
+                            <div class="auth-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="auth-label" for="email">Email</label>
                         <div class="auth-input-group">
                             <i class="bi bi-envelope"></i>
-                            <input type="email" id="email" name="email" class="auth-input" placeholder="Contoh@gmail.com">
+                            <input type="email" id="email" name="email" class="auth-input" placeholder="Contoh@gmail.com"
+                                   value="{{ old('email') }}">
                         </div>
+                        @error('email')
+                            <div class="auth-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
@@ -49,6 +57,9 @@
                             <input type="password" id="password" name="password" class="auth-input" placeholder="Minimal 8 karakter">
                             <i class="bi bi-eye auth-input-toggle" data-target="password"></i>
                         </div>
+                        @error('password')
+                            <div class="auth-error">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">

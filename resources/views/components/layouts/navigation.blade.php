@@ -20,28 +20,33 @@
           <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About Us</a>
         </li>
       </ul>
-      <form class="d-flex me-2" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <form class="d-flex me-2" role="search" id="search-form">
+        <input class="form-control me-2" type="search" id="search-input" placeholder="Cari game..." aria-label="Search"/>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            @isset($user)
-              <img src="/assets/logo_jajaningim/users.png" alt="{{ $user->name }}" width="24" height="24" class="rounded-circle me-1">
-              {{ $user->name }}
+            @auth
+              <img src="/assets/logo_jajaningim/users.png" alt="{{ Auth::user()->name }}" width="24" height="24" class="rounded-circle me-1">
+              {{ Auth::user()->name }}
             @else
-              login/register
-            @endisset
+              Login / Register
+            @endauth
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-            @isset($user)
+            @auth
               <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li>
+                <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+              </li>
             @else
               <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
               <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
-            @endisset
+            @endauth
         </li>
       </ul>
     </div>

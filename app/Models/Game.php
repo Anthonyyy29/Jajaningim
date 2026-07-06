@@ -7,22 +7,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Game extends Model
 {
-    protected $table = 'table_games';
-    protected $primaryKey = 'id_game';
-    public $timestamps = false;
     protected $fillable = [
-        'nama_game',
-        'gambar_game',
-        'deskripsi_game',
-        'is_active'
+        'name',
+        'description',
+        'image',
+        'form_fields',
+        'is_active',
     ];
 
-    public function items(): HasMany
+    protected $casts = [
+        'form_fields' => 'array',
+    ];
+
+    public function details(): HasMany
     {
-        return $this->hasMany(GameItem::class, 'id_game', 'id_game');
+        return $this->hasMany(GameDetail::class);
     }
-
-
-
-
 }
