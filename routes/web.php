@@ -32,6 +32,12 @@ Route::get('/transaction/{orderId}', [TransactionController::class, 'show'])->na
 // Midtrans payment notification webhook (server-to-server, no CSRF token available)
 Route::post('/payment/callback', [TransactionController::class, 'callback'])->name('payment.callback');
 
+// Midtrans dashboard Finish/Unfinish/Error Redirect URLs — all funnel to the same
+// status lookup since the real payment state only ever comes from our own DB.
+Route::get('/payment/finish', [TransactionController::class, 'redirectAfterPayment'])->name('payment.finish');
+Route::get('/payment/unfinish', [TransactionController::class, 'redirectAfterPayment'])->name('payment.unfinish');
+Route::get('/payment/error', [TransactionController::class, 'redirectAfterPayment'])->name('payment.error');
+
 // Auth routes
 Route::middleware('guest')->group(function () {
     Route::get('/login',    [AuthController::class, 'showLogin'])->name('login');

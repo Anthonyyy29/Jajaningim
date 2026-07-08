@@ -146,4 +146,20 @@ class TransactionController extends Controller
 
         return view('pages.transaction-status', compact('transaction'));
     }
+
+    /**
+     * Shared target for Midtrans dashboard Finish/Unfinish/Error Redirect URLs.
+     * Midtrans appends order_id as a query param on redirect; the real status is
+     * always re-read from our own DB on the status page, never trusted from the query string.
+     */
+    public function redirectAfterPayment(Request $request)
+    {
+        $orderId = $request->query('order_id');
+
+        if ($orderId && Transaction::where('order_id', $orderId)->exists()) {
+            return redirect()->route('transaction.show', $orderId);
+        }
+
+        return redirect()->route('home');
+    }
 }
