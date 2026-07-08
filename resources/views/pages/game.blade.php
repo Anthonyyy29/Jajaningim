@@ -8,8 +8,22 @@
 
     @endphp
 
-    {{-- Card atas: info game + form input ID --}}
-    <div class="promo_banner rounded-4 p-4 p-md-5 mb-4">
+    @if ($errors->any())
+        <div class="alert alert-danger rounded-4 mb-4">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('transaction.store') }}">
+        @csrf
+        <input type="hidden" name="game_id" value="{{ $game->id }}">
+
+        {{-- Card atas: info game + form input ID --}}
+        <div class="promo_banner rounded-4 p-4 p-md-5 mb-4">
         <div class="row g-4 align-items-center">
 
             <div class="col-md-7">
@@ -150,7 +164,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-of-accent w-100 mt-4 py-3 fw-bold"
+                <button type="submit" class="btn btn-of-accent w-100 mt-4 py-3 fw-bold"
                         style="font-family: 'Saira Stencil One', sans-serif; letter-spacing: .05em; font-size: 1.1rem;">
                     BELI SEKARANG !
                 </button>
@@ -158,6 +172,7 @@
         </div>
 
     </div>
+    </form>
 
     <style>
         .border-start-md { border-left: none; }

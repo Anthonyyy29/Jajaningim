@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 // // // // // // //
@@ -23,6 +24,13 @@ Route::get('/game-not-found', function () {
 Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
+
+// Checkout / transaction routes
+Route::post('/transaction', [TransactionController::class, 'store'])->name('transaction.store');
+Route::get('/transaction/{orderId}', [TransactionController::class, 'show'])->name('transaction.show');
+
+// Midtrans payment notification webhook (server-to-server, no CSRF token available)
+Route::post('/payment/callback', [TransactionController::class, 'callback'])->name('payment.callback');
 
 // Auth routes
 Route::middleware('guest')->group(function () {
