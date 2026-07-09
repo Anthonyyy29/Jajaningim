@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
@@ -122,5 +123,73 @@ class AuthController extends Controller
         $request->session()->regenerateToken(); // buat CSRF token baru
 
         return redirect()->route('home');
+    }
+
+    // =========================================================
+    // TAMPILKAN HALAMAN LUPA PASSWORD
+    // Dipanggil saat user buka GET /forgot-password.
+    // =========================================================
+    public function showForgotPassword()
+    {
+        return view('pages.forgot-password');
+    }
+
+    // =========================================================
+    // KIRIM LINK RESET PASSWORD
+    // Dipanggil saat user submit form lupa password (POST /forgot-password).
+    // Password::sendResetLink() generate token, simpan ke tabel
+    // password_reset_tokens, lalu kirim notifikasi email berisi link
+    // reset (dikirim lewat MAIL_MAILER di .env -- default 'log', jadi
+    // link-nya masuk ke storage/logs/laravel.log kalau belum diset SMTP asli).
+    // =========================================================
+    public function sendResetLink(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+        ]);
+
+        $status = Password::sendResetLink($request->only('email'));
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with('status', __($status))
+            : back()->withErrors(['email' => __($status)]);
+    }
+
+    // =========================================================
+    // TAMPILKAN HALAMAN RESET PASSWORD
+    // Dipanggil saat user klik link reset dari email (GET /reset-password/{token}).
+    // =========================================================
+    public function showResetPassword(Request $request, string $token)
+    {
+        return view('pages.reset-password', [
+            'token' => $token,
+            'email' => $request->query('email'),
+        ]);
+    }
+
+    // =========================================================
+    // PROSES RESET PASSWORD
+    // Dipanggil saat user submit password baru (POST /reset-password).
+    // Password::reset() validasi token & email ke tabel password_reset_tokens,
+    // kalau valid: update password user via callback lalu hapus token-nya.
+    // =========================================================
+    public function resetPassword(Request $request)
+    {
+        $validated = $request->validate([
+            'token' => ['required'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:8', 'confirmed'],
+        ]);
+
+        $status = Password::reset(
+            $validated,
+            function (User $user, string $password) {
+                $user->forceFill(['password' => Hash::make($password)])->save();
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withErrors(['email' => __($status)]);
     }
 }

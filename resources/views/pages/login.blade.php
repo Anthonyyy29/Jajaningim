@@ -18,6 +18,10 @@
                 <h1 class="auth-title">Masuk ke Akun</h1>
                 <p class="auth-subtitle">Belum punya akun? <a href="{{ route('register') }}" class="auth-link">Daftar di sini</a></p>
 
+                @if (session('status'))
+                    <div class="account-status mb-3">{{ session('status') }}</div>
+                @endif
+
                 <form method="POST" action="{{ route('login.post') }}">
                     @csrf
 
@@ -46,17 +50,11 @@
                     </div>
 
                     <div class="text-end mb-3">
-                        <a href="#" class="auth-link-muted">Lupa password?</a>
+                        <a href="{{ route('password.request') }}" class="auth-link-muted">Lupa password?</a>
                     </div>
 
                     <button type="submit" class="auth-btn-primary w-100">Masuk &amp; mulai Top Up 🚀</button>
                 </form>
-
-                <div class="auth-divider"><span>atau masuk dengan</span></div>
-
-                <button type="button" class="auth-btn-google w-100">
-                    <i class="bi bi-google"></i> Lanjut dengan Google
-                </button>
 
                 <p class="text-center mt-3 mb-0">
                     <a href="{{ route('home') }}" class="auth-link-muted">&larr; Kembali ke beranda</a>

@@ -10,11 +10,6 @@
                 <img src="{{ asset('assets/logo_jajaningim/logo.png') }}" alt="JajaninGim" class="auth-logo">
                 <h2 class="auth-left-title">Belanja game favoritmu sekarang!</h2>
                 <p class="auth-left-sub">Top up cepat, dan harga bersahabat.</p>
-
-                <div class="auth-promo-box">
-                    <span class="auth-promo-icon">🎁</span>
-                    <span>Dapatkan promo pembelian pertama <strong class="text-of-accent">10%</strong> hanya dengan register.</span>
-                </div>
             </div>
         </div>
 

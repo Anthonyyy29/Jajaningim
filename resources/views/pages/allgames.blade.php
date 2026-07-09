@@ -12,6 +12,10 @@
                             </div>
                         @endforeach
                     </div>
+
+                    <div class="mt-4">
+                        {{ $games->links('pagination::bootstrap-5') }}
+                    </div>
                 @else
                     <p>Belum ada game untuk ditampilkan.</p>
                 @endisset

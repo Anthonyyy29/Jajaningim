@@ -7,7 +7,7 @@
                 ABOUT<br>
                 <span class="text-of-teal">US</span>
             </h1>
-            <img src="{{ asset('assets/component_page/dummy.svg') }}" alt="JajaninGim" class="img-fluid rounded-4">
+            <img src="{{ asset('assets/component_page/topup-illustration.svg') }}" alt="Ilustrasi top up game JajaninGim" class="img-fluid rounded-4">
         </div>
 
         <div class="col-12 col-lg-6">

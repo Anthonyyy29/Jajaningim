@@ -8,94 +8,36 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
-    // // // // // // // // // //
-    // CONTROLLER UNTUK PUBLIC //
-    // // // // // // // // // //
-    
-
-    // Menampilkan semua game yang aktif untuk PUBLIC
+    // Menampilkan semua game yang aktif (halaman "Discover"), dipaginasi
     public function index()
     {
-        $games = Game::where('is_active', 'true')->get();
+        $games = Game::where('is_active', 'true')->paginate(12);
         return view('pages.allgames', compact('games'));
-    } 
+    }
+
+    // Menampilkan game "Populer" di homepage, diurutkan dari jumlah
+    // transaksi paid terbanyak (bukan sekadar daftar yang sama dengan Discover).
+    // Game yang belum pernah laku tetap ikut tampil (sold_count 0) supaya
+    // section ini tidak kosong di instalasi baru yang belum ada transaksi.
     public function populerIndex()
     {
-        $games = Game::where('is_active', 'true')->get();
+        $games = Game::where('is_active', 'true')
+            ->withCount(['details as sold_count' => function ($query) {
+                $query->join('transactions', 'transactions.game_detail_id', '=', 'game_detail.id')
+                    ->where('transactions.status', 'paid');
+            }])
+            ->orderByDesc('sold_count')
+            ->take(6)
+            ->get();
+
         return view('pages.home', compact('games'));
-    } 
+    }
 
-
-    // Menampilkan detail game tertentu untuk PUBLIC
+    // Menampilkan detail game tertentu
     public function show($id)
     {
         $game = Game::findOrFail($id);
         $paymentMethods = PaymentMethod::where('is_active', 'true')->get();
         return view('pages.game', compact('game', 'paymentMethods'));
-    }
-    
-    
-    // // // // // // // // // //
-    // CONTROLLER UNTUK ADMIN  //
-    // // // // // // // // // //
-    
-    // Menampilkan semua game yang aktif untuk ADMIN
-    public function indexAdmin()
-    {
-        $games = Game::where('is_active', 'true')->get();
-        return view('pages.home', compact('games'));
-    }
-
-    // Menampilkan detail game tertentu untuk ADMIN
-    public function showAdmin($id)
-    {
-        // show detail game
-        $game = Game::findOrFail($id);
-        return view('pages.game', compact('game'));
-    }
-
-
-
-
-
-
-    
-    public function create()
-    {
-        //
-        }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Game $game)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Game $game)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Game $game)
-    {
-        //
     }
 }

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 400" role="img" aria-label="Ilustrasi top up game JajaninGim">
+  <defs>
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E66F5" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#14B8A6" stop-opacity="0.16"/>
+    </linearGradient>
+    <linearGradient id="phoneBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#18223A"/>
+      <stop offset="100%" stop-color="#111A2E"/>
+    </linearGradient>
+    <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38D9C9"/>
+      <stop offset="100%" stop-color="#1E66F5"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="240" cy="200" r="190" fill="url(#bgGlow)"/>
+  <circle cx="90" cy="90" r="10" fill="#FF8A3D" opacity="0.7"/>
+  <circle cx="410" cy="120" r="7" fill="#14B8A6" opacity="0.8"/>
+  <circle cx="400" cy="300" r="12" fill="#1E66F5" opacity="0.5"/>
+  <circle cx="70" cy="300" r="6" fill="#FF8A3D" opacity="0.6"/>
+
+  <rect x="150" y="55" width="180" height="300" rx="28" fill="url(#phoneBody)" stroke="#2C3A57" stroke-width="3"/>
+  <rect x="168" y="85" width="144" height="220" rx="10" fill="#0C1322"/>
+  <rect x="220" y="330" width="40" height="6" rx="3" fill="#2C3A57"/>
+
+  <polygon points="240,140 268,168 240,240 212,168" fill="url(#gemGrad)"/>
+  <polygon points="212,168 240,168 240,240" fill="#1E66F5" opacity="0.55"/>
+  <polygon points="240,140 268,168 240,168" fill="#7CF2E4"/>
+
+  <rect x="196" y="256" width="88" height="14" rx="7" fill="#222F4D"/>
+  <rect x="196" y="256" width="60" height="14" rx="7" fill="#14B8A6"/>
+
+  <g transform="translate(60,205)">
+    <polygon points="16,0 32,10 28,26 4,26 0,10" fill="#FF8A3D"/>
+    <polygon points="16,4 27,11.5 24,23 8,23 5,11.5" fill="#111A2E" opacity="0.15"/>
+  </g>
+
+  <g transform="translate(378,220)">
+    <polygon points="14,0 28,9 24,23 4,23 0,9" fill="#14B8A6"/>
+  </g>
+
+  <g transform="translate(345,70) rotate(18)" fill="#F4F8FF" opacity="0.9">
+    <path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z"/>
+  </g>
+  <g transform="translate(105,150) rotate(-12)" fill="#F4F8FF" opacity="0.7">
+    <path d="M6 0 L7.5 4.5 L12 6 L7.5 7.5 L6 12 L4.5 7.5 L0 6 L4.5 4.5 Z"/>
+  </g>
+</svg>
