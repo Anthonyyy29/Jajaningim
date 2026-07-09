@@ -42,6 +42,15 @@ File ini tidak dipakai di mana pun (component yang benar-benar dipakai adalah `A
 
 **Perbaikan (diterapkan):** file dihapus.
 
+### 12. ~~Pilihan payment method di web tidak pernah dikirim ke Midtrans~~ ✅ Fixed (2026-07-09)
+`TransactionController@store` — customer pilih payment method (QRIS/GoPay/ShopeePay/DANA/OVO) di `game.blade.php`, tersimpan ke `transactions.payment_method_id`, tapi payload `Snap::createTransaction()` tidak pernah menyertakan `enabled_payments`. Akibatnya Snap selalu nunjukin SEMUA metode aktif, customer bisa bayar pakai metode lain dari yang dipilih di web, dan `payment_method_id` di database jadi tidak akurat (tidak mencerminkan metode yang beneran dipakai).
+
+**Perbaikan (diterapkan):**
+- Migration `2026_07_09_100000_add_midtrans_code_to_payment_methods.php` — tambah kolom `table_payment_method.midtrans_code` (backfill otomatis untuk 5 metode seeded: QRIS→`other_qris`, GoPay→`gopay`, ShopeePay→`shopeepay`, DANA→`dana`, OVO→`ovo`, sesuai dokumentasi resmi Midtrans).
+- `TransactionController@store` sekarang set `enabled_payments => [$paymentMethod->midtrans_code]` supaya Snap langsung dibatasi ke metode yang dipilih. Kalau `midtrans_code` kosong (belum diisi admin untuk metode baru), key `enabled_payments` sengaja tidak disertakan sama sekali (fallback semua metode aktif) daripada checkout gagal total — dicatat lewat `Log::warning`.
+- Filament `PaymentMethodForm`/`PaymentMethodsTable` — field `midtrans_code` wajib diisi admin lewat dropdown kode yang valid.
+- **Diverifikasi end-to-end via Sail:** checkout dengan kelima payment method, semuanya dapat redirect Snap valid tanpa error.
+
 ---
 
 ## 🟡 Struktur & kualitas kode

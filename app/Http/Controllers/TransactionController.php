@@ -60,7 +60,7 @@ class TransactionController extends Controller
             'status' => 'pending',
         ]);
 
-        $snapResponse = Snap::createTransaction([
+        $snapParams = [
             'transaction_details' => [
                 'order_id' => $orderId,
                 'gross_amount' => $detail->price,
@@ -74,12 +74,26 @@ class TransactionController extends Controller
                 'quantity' => 1,
                 'name' => "{$game->name} - {$detail->name}",
             ]],
-            // enabled_payments is left unset (all dashboard-active methods shown),
-            // so credit_card must stay 3DS-enforced regardless of which method the customer picks.
             'credit_card' => [
                 'secure' => true,
             ],
-        ]);
+        ];
+
+        // Batasi Snap ke metode yang dipilih customer di web (bukan Snap yang
+        // nunjukin semua metode lagi) -- lihat PaymentMethod::midtrans_code.
+        // Kalau kode belum diisi admin, key ini sengaja tidak disertakan sama
+        // sekali (bukan null) supaya Snap fallback nunjukin semua metode aktif,
+        // daripada checkout gagal total gara-gara payload tidak valid.
+        if ($paymentMethod->midtrans_code) {
+            $snapParams['enabled_payments'] = [$paymentMethod->midtrans_code];
+        } else {
+            Log::warning('midtrans.payment_method_missing_code', [
+                'payment_method_id' => $paymentMethod->id,
+                'metode_payment' => $paymentMethod->metode_payment,
+            ]);
+        }
+
+        $snapResponse = Snap::createTransaction($snapParams);
 
         $transaction->update(['midtrans_snap_token' => $snapResponse->token]);
 

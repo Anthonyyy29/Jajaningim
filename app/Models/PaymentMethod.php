@@ -10,6 +10,7 @@ class PaymentMethod extends Model
 
     protected $fillable = [
         'metode_payment',
+        'midtrans_code',
         'logo',
         'is_active',
     ];

@@ -14,11 +14,11 @@ class payment_method_seeder extends Seeder
     public function run(): void
     {
         DB::table('table_payment_method')->insert([
-            ['metode_payment' => 'QRIS', 'logo' => 'qris.png', 'is_active' => 'true'],
-            ['metode_payment' => 'GoPay', 'logo' => 'gopay.png', 'is_active' => 'true'],
-            ['metode_payment' => 'ShopeePay', 'logo' => 'shopeepay.png', 'is_active' => 'true'],
-            ['metode_payment' => 'DANA', 'logo' => 'dana.png', 'is_active' => 'true'],
-            ['metode_payment' => 'OVO', 'logo' => 'ovo.png', 'is_active' => 'true'],
+            ['metode_payment' => 'QRIS', 'midtrans_code' => 'other_qris', 'logo' => 'qris.png', 'is_active' => 'true'],
+            ['metode_payment' => 'GoPay', 'midtrans_code' => 'gopay', 'logo' => 'gopay.png', 'is_active' => 'true'],
+            ['metode_payment' => 'ShopeePay', 'midtrans_code' => 'shopeepay', 'logo' => 'shopeepay.png', 'is_active' => 'true'],
+            ['metode_payment' => 'DANA', 'midtrans_code' => 'dana', 'logo' => 'dana.png', 'is_active' => 'true'],
+            ['metode_payment' => 'OVO', 'midtrans_code' => 'ovo', 'logo' => 'ovo.png', 'is_active' => 'true'],
         ]);
     }
 }

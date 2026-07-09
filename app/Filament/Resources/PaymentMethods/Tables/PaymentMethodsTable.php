@@ -16,6 +16,11 @@ class PaymentMethodsTable
             ->columns([
                 TextColumn::make('metode_payment')
                     ->searchable(),
+                TextColumn::make('midtrans_code')
+                    ->label('Kode Midtrans')
+                    ->badge()
+                    ->color(fn (?string $state): string => $state ? 'info' : 'danger')
+                    ->placeholder('Belum diset!'),
                 TextColumn::make('logo')
                     ->searchable(),
                 TextColumn::make('is_active')
