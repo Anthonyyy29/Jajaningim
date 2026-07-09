@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\TransactionController;
@@ -47,3 +48,10 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+// Account routes (butuh login)
+Route::middleware('auth')->group(function () {
+    Route::get('/account', [AccountController::class, 'edit'])->name('account.edit');
+    Route::put('/account', [AccountController::class, 'update'])->name('account.update');
+    Route::put('/account/password', [AccountController::class, 'updatePassword'])->name('account.password');
+});

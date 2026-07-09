@@ -1,0 +1,205 @@
+/* ===========================================================
+   Ocean Fresh — Account detail page
+   Variabel warna (--of-*) diambil dari resources/css/app.css
+   =========================================================== */
+
+.account-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 800px) {
+    .account-grid { grid-template-columns: 1fr; }
+}
+
+.account-card {
+    background: var(--of-surface);
+    border: 1px solid var(--of-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.account-profile-card {
+    text-align: center;
+}
+
+.account-avatar {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, var(--of-primary) 0%, var(--of-teal) 100%);
+    color: #fff;
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 1.6rem;
+}
+
+.account-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: .2rem;
+}
+
+.account-email {
+    color: var(--of-text-2);
+    font-size: .85rem;
+    margin-bottom: 1rem;
+    word-break: break-word;
+}
+
+.account-meta {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    text-align: left;
+    border-top: 1px solid var(--of-border);
+    padding-top: 1rem;
+    margin-top: .25rem;
+}
+
+.account-meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8rem;
+}
+.account-meta-row span:first-child { color: var(--of-muted); }
+.account-meta-row span:last-child { color: var(--of-text-2); font-weight: 600; }
+
+.account-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.account-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1.1rem;
+}
+
+.account-section-head h2 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.account-section-head .hint {
+    font-size: .8rem;
+    color: var(--of-muted);
+}
+
+.account-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+@media (max-width: 560px) { .account-field-row { grid-template-columns: 1fr; } }
+
+.account-field {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    margin-bottom: 1rem;
+}
+.account-field:last-child { margin-bottom: 0; }
+
+.account-field label {
+    font-size: .8rem;
+    color: var(--of-text-2);
+}
+
+.account-field input {
+    background: var(--of-surface-2);
+    border: 1px solid var(--of-border);
+    border-radius: 10px;
+    padding: .65rem .85rem;
+    color: var(--of-text);
+    font-size: .9rem;
+}
+
+.account-field input:focus {
+    outline: 2px solid var(--of-primary);
+    outline-offset: 1px;
+}
+
+.account-form-actions {
+    display: flex;
+    gap: .75rem;
+    margin-top: 1.25rem;
+}
+
+.account-status {
+    background: rgba(20, 184, 166, .1);
+    border: 1px solid rgba(20, 184, 166, .35);
+    color: var(--of-teal);
+    border-radius: 10px;
+    padding: .65rem 1rem;
+    font-size: .85rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Order history table */
+.order-table-wrap { overflow-x: auto; }
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+}
+
+.order-table th {
+    text-align: left;
+    color: var(--of-muted);
+    font-weight: 600;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 0 .6rem .6rem;
+    border-bottom: 1px solid var(--of-border);
+}
+
+.order-table td {
+    padding: .8rem .6rem;
+    border-bottom: 1px solid var(--of-border);
+    vertical-align: middle;
+    color: var(--of-text);
+}
+
+.order-table tr:last-child td { border-bottom: none; }
+
+.order-id {
+    font-size: .78rem;
+    color: var(--of-text-2);
+}
+
+.order-item-name { font-weight: 600; font-size: .85rem; }
+.order-item-sub { color: var(--of-text-2); font-size: .78rem; }
+
+.amount { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .3rem .65rem;
+    border-radius: 50rem;
+    font-size: .75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.pill--paid    { background: rgba(20,184,166,.12); color: var(--of-teal); }
+.pill--pending { background: rgba(169,182,206,.12); color: var(--of-text-2); }
+.pill--failed  { background: rgba(220,53,69,.12);  color: #dc3545; }
+
+.account-empty-note {
+    color: var(--of-muted);
+    font-size: .85rem;
+    padding: .5rem 0;
+}

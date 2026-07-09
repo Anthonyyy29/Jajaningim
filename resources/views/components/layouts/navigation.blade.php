@@ -36,7 +36,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
             @auth
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="{{ route('account.edit') }}">Profile</a></li>
               <li>
                 <form method="POST" action="{{ route('logout') }}">
                   @csrf
