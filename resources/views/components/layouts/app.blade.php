@@ -36,9 +36,45 @@
         {{ $slot }}
     </main>
 
-    {{-- Footer (opsional) --}}
-    <footer class="text-center py-3 mt-4">
-        <small>&copy; {{ date('Y') }} Jajaningim. All rights reserved.</small>
+    {{-- Footer --}}
+    <footer class="mt-4 pt-5 pb-4" style="border-top: 1px solid var(--of-border);">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-4">
+                    <h6 class="fw-bold mb-3" style="color: var(--of-text);">Development Team</h6>
+                    <div style="color: var(--of-text-2); font-size: .9rem;">
+                        <div>Adi Ezra Anthoni</div>
+                        <div>Rivan Aufar Prayudi</div>
+                        <div>Rafdi Muliawan</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <h6 class="fw-bold mb-3" style="color: var(--of-text);">Campus Information</h6>
+                    <div style="color: var(--of-text-2); font-size: .9rem;">
+                        <div>Esa Unggul - Harapan Indah University</div>
+                        <div>Jl. Harapan Indah Boulevard No.2, Pusaka Rakyat, Kec. Tarumajaya, Kabupaten Bekasi, Jawa Barat 17214</div>
+                        <div>Course: Web Programming</div>
+                        <div>Lecturer: Mrs. Dewi Setiowati, A.Md., S.Pd., M.Tr.Kom.</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <h6 class="fw-bold mb-3" style="color: var(--of-text);">About This App</h6>
+                    <div style="color: var(--of-text-2); font-size: .9rem;">
+                        <div>Status: Beta</div>
+                        <div>Version: 0.1.1</div>
+                        <div class="mt-2">
+                            <a href="https://github.com/Anthonyyy29/Jajaningim" target="_blank" rel="noopener" class="auth-link-muted">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4 pt-3" style="border-top: 1px solid var(--of-border); color: var(--of-muted); font-size: .85rem;">
+                &copy; {{ date('Y') }} Jajaningim - All rights reserved.
+            </div>
+        </div>
     </footer>
 
 </body>
