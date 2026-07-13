@@ -52,7 +52,13 @@ class TransactionInfolist
                     ->components([
                         TextEntry::make('form_data')
                             ->label('')
-                            ->formatStateUsing(fn (?array $state) => collect($state ?? [])
+                            // ->state() override total, bukan formatStateUsing() -- form_data
+                            // adalah array (JSON cast), dan Filament infolist memperlakukan state
+                            // array sebagai daftar multi-item (format per elemen lalu digabung),
+                            // jadi formatStateUsing yang selalu mengembalikan string utuh
+                            // ke-render dobel (sekali per elemen array). ->state() mengganti
+                            // resolusi state sepenuhnya jadi satu string tunggal.
+                            ->state(fn ($record) => collect($record->form_data ?? [])
                                 ->map(fn ($value, $key) => "{$key}: {$value}")
                                 ->implode(', ') ?: '—'),
                     ]),

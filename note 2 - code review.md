@@ -51,6 +51,13 @@ File ini tidak dipakai di mana pun (component yang benar-benar dipakai adalah `A
 - Filament `PaymentMethodForm`/`PaymentMethodsTable` — field `midtrans_code` wajib diisi admin lewat dropdown kode yang valid.
 - **Diverifikasi end-to-end via Sail:** checkout dengan kelima payment method, semuanya dapat redirect Snap valid tanpa error.
 
+### 13. ~~Halaman detail transaksi di admin selalu 500~~ ✅ Fixed (2026-07-13)
+`admin/transactions/{id}` (View page) crash total untuk **setiap** transaksi, ketemu waktu user lapor "sering error di payment". Root cause: `TransactionInfolist.php` field `form_data` pakai `formatStateUsing(fn (?array $state) => ...)` dengan type-hint ketat `?array`, tapi Filament infolist ngasih `$state` sebagai string buat kolom JSON-cast ini → `TypeError: Argument #1 ($state) must be of type ?array, string given`.
+
+**Perbaikan (diterapkan):** ganti `formatStateUsing()` jadi `->state(fn ($record) => ...)` yang ambil `$record->form_data` langsung dari model (selalu array asosiatif benar lewat cast Eloquent), bukan dari `$state` yang resolusinya oleh Filament infolist tidak konsisten untuk kolom array/JSON (sempat juga ketemu bug turunan: kalau tetap pakai `formatStateUsing`, Filament infolist memperlakukan state array sebagai daftar multi-item dan me-render closure-nya dobel per elemen — `->state()` menghindari ini karena override total, bukan format-per-item).
+
+**Diverifikasi lewat Sail:** transaksi dengan `form_data` normal (tampil `user_id: ..., server_id: ...` benar, tidak dobel), transaksi dengan `form_data` null (tampil `—`), dan halaman list tetap normal.
+
 ---
 
 ## 🟡 Struktur & kualitas kode
@@ -65,17 +72,17 @@ Kalau suatu saat ada yang salah ketik `'True'`/`true` (boolean asli) alih-alih s
 
 **Perbaikan:** ubah kolom jadi `boolean` asli (`$table->boolean('is_active')->default(true)`) + cast di model, lalu query pakai `where('is_active', true)`. Tambahkan juga query scope `Game::active()` / `PaymentMethod::active()` supaya logic-nya tidak diulang di 4+ tempat.
 
-### 6. `GameController` punya banyak method mati (dead code)
+### 6. ~~`GameController` punya banyak method mati (dead code)~~ ✅ Fixed (2026-07-09, lewat note 3 #9)
 `indexAdmin()`, `showAdmin()`, dan stub kosong `create()`, `store()`, `edit()`, `update()`, `destroy()` tidak pernah dipanggil dari `routes/web.php` — sekarang CRUD admin sudah diambil alih Filament. Method-method ini peninggalan `make:controller --resource` yang belum dibersihkan.
 
-**Perbaikan:** hapus semua method yang tidak dipakai, sisakan `index`, `populerIndex`, `show` untuk public.
+**Perbaikan (diterapkan):** semua method mati dihapus, `GameController` sekarang cuma `index`, `populerIndex`, `show`. Lihat `note 3 - halaman kurang lengkap.md` #9.
 
-### 7. "Populer" sebenarnya sama persis dengan "All Games"
+### 7. ~~"Populer" sebenarnya sama persis dengan "All Games"~~ ✅ Fixed (2026-07-09, lewat note 3 #7)
 `populerIndex()` query-nya identik dengan `index()` (`Game::where('is_active','true')->get()`, tanpa sorting/limit apa pun). Section "POPULER" di homepage jadi menampilkan seluruh game yang sama dengan halaman "Discover". Tidak ada konsep popularitas nyata (tidak ada kolom `is_popular`, `sold_count`, atau `->take(n)`).
 
-Markup `games_populer.blade.php` dan `allgames.blade.php` juga nyaris identik (grid card yang sama, copy-paste).
+Markup `games_populer.blade.php` dan `allgames.blade.php` juga nyaris identik (grid card yang sama, copy-paste) — **ini bagiannya belum dibereskan**, extract jadi 1 partial masih perlu dikerjakan.
 
-**Perbaikan:** kalau memang belum butuh logic popularitas, minimal batasi jumlahnya (`->take(6)`) supaya beda dari "All Games". Lalu extract markup grid game jadi 1 partial/component yang dipakai ulang di kedua halaman.
+**Perbaikan (diterapkan):** `populerIndex()` sekarang urut berdasarkan jumlah transaksi `paid` per game (data penjualan nyata dari tabel `transactions`), `take(6)`. Lihat `note 3 - halaman kurang lengkap.md` #7.
 
 ### 8. Query game aktif untuk search dijalankan di layout, bukan lewat controller
 `components/layouts/app.blade.php` menjalankan `Game::where('is_active','true')->get(['id','name'])` langsung di Blade, di layout utama yang di-include di **setiap halaman** (termasuk halaman login, about, dll yang tidak butuh data ini). Query logic sebaiknya tidak ada di view.
@@ -107,6 +114,8 @@ Markup `games_populer.blade.php` dan `allgames.blade.php` juga nyaris identik (g
 ## Ringkasan Prioritas
 
 1. ~~**Fix dulu:** #1 (timestamps `games`) dan #2 (tidak ada akun admin)~~ ✅ selesai 2026-07-07.
-2. ~~**Sebelum lanjut fitur checkout:** #3~~ ✅ selesai 2026-07-07 — tinggal isi `MIDTRANS_SERVER_KEY`/`MIDTRANS_CLIENT_KEY` sandbox di `.env` untuk tes end-to-end.
-3. **Bersih-bersih cepat:** ~~#4~~ ✅ selesai, sisa #6, #11 — hapus kode mati, rapikan `.gitignore`.
-4. **Kalau ada waktu:** #5, #7, #8, #9, #10 — perbaikan kualitas & keamanan jangka menengah.
+2. ~~**Sebelum lanjut fitur checkout:** #3~~ ✅ selesai 2026-07-07, kredensial sudah diisi & diverifikasi jalan.
+3. ~~**Bersih-bersih cepat:** #4, #6~~ ✅ selesai — sisa **#11** (asset Filament ke-commit).
+4. ~~**Popularitas nyata:** #7~~ ✅ selesai — sisa bagian "extract markup jadi partial" belum.
+5. ~~**Payment method:** #12~~ ✅ selesai 2026-07-09.
+6. **Masih terbuka:** #5 (boolean-as-string), #8 (query di layout), #9 (penamaan), #10 (rate limit login), #11 (asset Filament ter-commit) — lihat detail di atas.
