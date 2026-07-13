@@ -43,9 +43,9 @@
                 <div class="col-12 col-md-4">
                     <h6 class="fw-bold mb-3" style="color: var(--of-text);">Development Team</h6>
                     <div style="color: var(--of-text-2); font-size: .9rem;">
-                        <div>Adi Ezra Anthoni</div>
-                        <div>Rivan Aufar Prayudi</div>
-                        <div>Rafdi Muliawan</div>
+                        <div>Adi Ezra Anthoni &mdash; 20240801036</div>
+                        <div>Rivan Aufar Prayudi &mdash; 20240801089</div>
+                        <div>Rafdi Muliawan &mdash; 20240801160</div>
                     </div>
                 </div>
 
@@ -56,6 +56,8 @@
                         <div>Jl. Harapan Indah Boulevard No.2, Pusaka Rakyat, Kec. Tarumajaya, Kabupaten Bekasi, Jawa Barat 17214</div>
                         <div>Course: Web Programming</div>
                         <div>Lecturer: Mrs. Dewi Setiowati, A.Md., S.Pd., M.Tr.Kom.</div>
+                        <div>Class: KH002</div>
+                        <div>Academic Year: 2025/2026 (Even Semester)</div>
                     </div>
                 </div>
 
@@ -64,6 +66,7 @@
                     <div style="color: var(--of-text-2); font-size: .9rem;">
                         <div>Status: Beta</div>
                         <div>Version: 0.1.1</div>
+                        <div>Domain: jajaningim.my.id</div>
                         <div class="mt-2">
                             <a href="https://github.com/Anthonyyy29/Jajaningim" target="_blank" rel="noopener" class="auth-link-muted">GitHub</a>
                         </div>
