@@ -127,13 +127,23 @@
         <div class="col-md-5">
             <div class="promo_banner rounded-4 p-4 p-md-5 h-100">
                 <h2 class="h5 fw-bold mb-1">E-mail</h2>
-                <p class="small mb-3" style="color: var(--of-text-2);">
-                    Opsional: isi email kamu untuk mendapatkan bukti pembayaran.
-                </p>
-                <input type="email" id="email_input" name="email"
-                       class="form-control form-control-lg"
-                       style="background-color: var(--of-surface-2); border-color: var(--of-border); color: var(--of-text);"
-                       placeholder="Masukkan E-mail...">
+                @if (auth()->check())
+                    <p class="small mb-3" style="color: var(--of-text-2);">
+                        Transaksi ini akan tercatat di riwayat akun kamu ({{ auth()->user()->email }}).
+                    </p>
+                    <input type="email" id="email_input" name="email"
+                           class="form-control form-control-lg"
+                           style="background-color: var(--of-surface-2); border-color: var(--of-border); color: var(--of-text);"
+                           value="{{ auth()->user()->email }}" readonly>
+                @else
+                    <p class="small mb-3" style="color: var(--of-text-2);">
+                        Opsional: isi email kamu untuk mendapatkan bukti pembayaran.
+                    </p>
+                    <input type="email" id="email_input" name="email"
+                           class="form-control form-control-lg"
+                           style="background-color: var(--of-surface-2); border-color: var(--of-border); color: var(--of-text);"
+                           placeholder="Masukkan E-mail...">
+                @endif
             </div>
         </div>
 

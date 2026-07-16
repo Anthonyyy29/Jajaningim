@@ -49,13 +49,19 @@ class TransactionController extends Controller
 
         $orderId = 'JJN-'.now()->format('Ymd').'-'.Str::upper(Str::random(8));
 
+        // Kalau user sedang login, riwayat transaksi di halaman akun dicocokkan
+        // lewat email (lihat AccountController::edit) -- jadi email akun dipakai
+        // di sini, bukan input form yang opsional, supaya transaksi tidak "hilang"
+        // dari riwayat kalau user lupa/tidak mengisi field email saat checkout.
+        $email = $request->user()?->email ?? $validated['email'] ?? null;
+
         $transaction = Transaction::create([
             'order_id' => $orderId,
             'game_id' => $game->id,
             'game_detail_id' => $detail->id,
             'payment_method_id' => $paymentMethod->id,
             'form_data' => $formData,
-            'email' => $validated['email'] ?? null,
+            'email' => $email,
             'amount' => $detail->price,
             'status' => 'pending',
         ]);
